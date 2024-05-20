@@ -13,10 +13,10 @@ const PORT = process.env._port
 
 
 
-connectionToMongoDb()
+connectionToMongoDb(process.env._MONGO_URL)
 
 
 app.use("/url",urlRoute)
 app.listen(PORT,()=>{
-    console.log(`Server is running at ${PORT}`);
+    console.log(`Server is running at ${PORT}`); 
 }) 
