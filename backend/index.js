@@ -2,9 +2,10 @@ const express = require("express")
 const app = express()
 require("dotenv").config()
 
-app.use(express.json())
+
 const{connectionToMongoDb} = require("./connect")
 
+app.use(express.json())
 const urlRoute =require ("./routes/urlRouter")
 
  
