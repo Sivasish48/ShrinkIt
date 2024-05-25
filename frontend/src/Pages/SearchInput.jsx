@@ -40,7 +40,8 @@ export default function SearchInput() {
   }
 
   return (
-    <Form {...form}>
+    <div className="grid h-screen place-items-center mt-[-10%]">
+       <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
         <FormField
           control={form.control}
@@ -49,7 +50,7 @@ export default function SearchInput() {
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="shadcn" {...field}  className="w-full max-w-m"/>
               </FormControl>
               <FormDescription>
                 This is your public display name.
@@ -58,8 +59,10 @@ export default function SearchInput() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit">Shrink It</Button>
       </form>
     </Form>
+    </div>
+    
   );
 }
