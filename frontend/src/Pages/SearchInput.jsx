@@ -1,7 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Button } from "@/components/ui/button";
+//import { Button } from "@/components/ui/button";
+import DialogButton from "./DialogButton";
+
 import {
   Form,
   FormControl,
@@ -40,29 +42,25 @@ export default function SearchInput() {
   }
 
   return (
-    <div className="grid h-screen place-items-center mt-[-10%]">
-       <Form {...form}>
+    <div className="grid h-screen place-items-center mt-[-8%]">
+     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
         <FormField
           control={form.control}
           name="username"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Paste Your Url here.</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field}  className="w-full max-w-m"/>
+                <Input placeholder="Enter Link to Shrink" {...field} />
               </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit">Shrink It</Button>
+       <DialogButton/>
       </form>
     </Form>
     </div>
-    
   );
 }
