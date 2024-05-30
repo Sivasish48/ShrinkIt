@@ -1,7 +1,6 @@
 
 
 
-import UpperNavigation from "./UpperNavigation";
 
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -49,9 +48,6 @@ export default function SearchInput() {
 
   return (
     <div>
-      <div>
-         <UpperNavigation/>
-      </div>
     
     <div className="grid h-screen place-items-center mt-[-8%]">
      <Form {...form}>
