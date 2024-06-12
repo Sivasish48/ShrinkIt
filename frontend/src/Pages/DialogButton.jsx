@@ -15,19 +15,37 @@ import {
     DialogClose
   } from "@/components/ui/dialog"
 import { useState } from "react";
+import axios from "axios";
   
 
-  function DialogButton(){
+  function DialogButton({url}){
 
-    const [value,setValue]=useState("injn")
+    const [value,setValue]=useState("")
     const [copied,setCopied]=useState(false)
+   const[shortUrl,setShortUrl]=useState("")
+
+    const handleGetShortUrlRequest = ()=>{
+      const response = axios.post("http://localhost:5000/url",{url})
+      .then((response)=>{
+           if(response.data && response.data.id){
+            return setShortUrl(`http://localhost:5000/${response.data.id}`)
+           }
+      })
+      .catch(error => {
+        console.error(
+            error.response && error.response.data && error.response.data.error
+                ? error.response.data.error
+                : 'Server error! Please try again later.'
+        );
+    });
+    }
 
     
 
     return <div>
         <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">ShrinK it</Button>
+        <Button variant="outline" onClick={handleGetShortUrlRequest} >ShrinK it</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
@@ -43,8 +61,8 @@ import { useState } from "react";
             </Label>
             <Input
               id="link"
-              value={value}
-
+              value={shortUrl}
+           
               onChange={((e)=>{
                 return setValue(e.target.value)
               })}
@@ -52,7 +70,7 @@ import { useState } from "react";
             />
           </div>
 
-          <CopyToClipboard text={value}
+          <CopyToClipboard text={shortUrl}
           onCopy={()=> setCopied(true) }>
 
           <Button size="sm" className="px-3">
