@@ -1,5 +1,5 @@
-import { ProfileLogo } from "@/components/component/profile-logo";
-import { ProfileStats } from "@/components/component/profile-stats";
+import { ProfileLogo } from "@/components/component/ProfileLogo";
+import  ProfileStats  from "@/components/component/ProfileStats";
 
 
 function Profile(){
